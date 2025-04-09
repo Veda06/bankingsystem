@@ -23,7 +23,6 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
-        working-directory: BankingSystem
 
   test:
     name: ✅ Run JUnit Tests
@@ -42,14 +41,13 @@ jobs:
 
       - name: Run tests
         run: mvn test
-        working-directory: BankingSystem
 
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: BankingSystem/target/surefire-reports/
+          path: target/surefire-reports/
 
   deploy:
     name: 🚀 Simulate Deployment
@@ -62,3 +60,4 @@ jobs:
 
       - name: Simulate Deploy
         run: echo "✅ Tests passed. Ready to deploy!"
+
